@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="27">
+      <Unit0>
+        <Filename Value="Digitizer.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="26"/>
+        <UsageCount Value="116"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="ufmmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="3"/>
+        <CursorPos Y="189"/>
+        <UsageCount Value="116"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="UPoints.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="23"/>
+        <CursorPos Y="143"/>
+        <UsageCount Value="115"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="text.txt"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="14"/>
+        <UsageCount Value="81"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="text1.txt"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos Y="15"/>
+        <UsageCount Value="44"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="C:\lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3654"/>
+        <CursorPos Y="3668"/>
+        <UsageCount Value="2"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="D:\Delphi\PolyScopeIB\UErasing.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="33"/>
+        <CursorPos X="31" Y="42"/>
+        <UsageCount Value="20"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="D:\Delphi\PolyScopeIB\UOpenScopeDlg.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="173"/>
+        <CursorPos Y="191"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="D:\Delphi\PolyScopeIB\UScopeConfigEdit.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="214"/>
+        <CursorPos X="36" Y="217"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="D:\Delphi\PolyScopeIB\UScopeListEdit.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="63"/>
+        <CursorPos Y="72"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="D:\Delphi\PolyScopeIB\Agilent6000\UrpAgilent6000.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2408"/>
+        <CursorPos X="20" Y="2417"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="D:\Delphi\PolyScopeIB\HP624A\UrpHP624A.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2141"/>
+        <CursorPos X="13" Y="2154"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="D:\Delphi\PolyScopeIB\ScopeClient\UrpTDS200.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1616"/>
+        <CursorPos Y="1634"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="D:\Delphi\PolyScopeIB\TDS220\UrpTDS200.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1694"/>
+        <CursorPos Y="1712"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="D:\Delphi\PolyScopeIB\TDS3012\UrpTDS3000.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1828"/>
+        <CursorPos Y="1843"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="D:\Delphi\PolyScopeIB\TDS5000\UrpTDS5000.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1882"/>
+        <CursorPos X="26" Y="1895"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="D:\Delphi\PolyScopeIB\UdmMainDevice.dfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="51"/>
+        <CursorPos X="30" Y="60"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="..\Import\ATImageBox\atimagebox.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="73"/>
+        <UsageCount Value="8"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="..\Import\DrawObjects\Source\DrawObjects.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="336"/>
+        <CursorPos X="11" Y="350"/>
+        <UsageCount Value="9"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="..\Import\DrawObjects\Source\DrawObjectsBase.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="207"/>
+        <CursorPos X="32" Y="229"/>
+        <UsageCount Value="9"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="..\Import\DrawObjects\Source\DrawObjectsExtended.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="8"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="..\Import\ATImageBox\atimagebox\atimagebox.pas"/>
+        <UnitName Value="ATImageBox"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="851"/>
+        <CursorPos X="30" Y="876"/>
+        <UsageCount Value="8"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="C:\lazarus\lcl\extctrls.pp"/>
+        <UnitName Value="ExtCtrls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="480"/>
+        <CursorPos X="3" Y="478"/>
+        <UsageCount Value="8"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="..\Common\graph.pas"/>
+        <UnitName Value="Graph"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="6" Y="22"/>
+        <UsageCount Value="8"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="..\Import\ATImageBox\atimagebox\atimagebox_register.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="21"/>
+        <UsageCount Value="8"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="D:\Delphi\Digitizer\UfmMain.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="265"/>
+        <CursorPos Y="280"/>
+        <UsageCount Value="8"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="..\Import\ATImagebox1LCL\Source\ATImageBox1.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="671"/>
+        <CursorPos X="29" Y="672"/>
+        <UsageCount Value="8"/>
+      </Unit26>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="147" TopLine="136"/>
+      </Position1>
+      <Position2>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="160" TopLine="155"/>
+      </Position2>
+      <Position3>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="161" TopLine="155"/>
+      </Position3>
+      <Position4>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="162" TopLine="155"/>
+      </Position4>
+      <Position5>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="163" TopLine="155"/>
+      </Position5>
+      <Position6>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="164" TopLine="155"/>
+      </Position6>
+      <Position7>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="167" TopLine="155"/>
+      </Position7>
+      <Position8>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="168" TopLine="155"/>
+      </Position8>
+      <Position9>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="169" TopLine="155"/>
+      </Position9>
+      <Position10>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="170" TopLine="155"/>
+      </Position10>
+      <Position11>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="171" TopLine="155"/>
+      </Position11>
+      <Position12>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="172" TopLine="156"/>
+      </Position12>
+      <Position13>
+        <Filename Value="UPoints.pas"/>
+        <Caret Line="136" TopLine="126"/>
+      </Position13>
+      <Position14>
+        <Filename Value="UPoints.pas"/>
+        <Caret Line="137" TopLine="126"/>
+      </Position14>
+      <Position15>
+        <Filename Value="UPoints.pas"/>
+        <Caret Line="138" TopLine="126"/>
+      </Position15>
+      <Position16>
+        <Filename Value="UPoints.pas"/>
+        <Caret Line="139" TopLine="126"/>
+      </Position16>
+      <Position17>
+        <Filename Value="UPoints.pas"/>
+        <Caret Line="140" TopLine="126"/>
+      </Position17>
+      <Position18>
+        <Filename Value="UPoints.pas"/>
+        <Caret Line="141" TopLine="126"/>
+      </Position18>
+      <Position19>
+        <Filename Value="UPoints.pas"/>
+        <Caret Line="142" TopLine="126"/>
+      </Position19>
+      <Position20>
+        <Filename Value="UPoints.pas"/>
+        <Caret Line="143" TopLine="127"/>
+      </Position20>
+      <Position21>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="173" TopLine="157"/>
+      </Position21>
+      <Position22>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="155" TopLine="146"/>
+      </Position22>
+      <Position23>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="179" TopLine="170"/>
+      </Position23>
+      <Position24>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="180" TopLine="170"/>
+      </Position24>
+      <Position25>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="182" TopLine="170"/>
+      </Position25>
+      <Position26>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="107" Column="36" TopLine="95"/>
+      </Position26>
+      <Position27>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="158" Column="23" TopLine="148"/>
+      </Position27>
+      <Position28>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="96" Column="26" TopLine="89"/>
+      </Position28>
+      <Position29>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="201" Column="71" TopLine="187"/>
+      </Position29>
+      <Position30>
+        <Filename Value="ufmmain.pas"/>
+        <Caret Line="95" Column="21" TopLine="89"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

@@ -137,6 +137,7 @@ end;
 
 procedure TfmMain.bnChangeImageClick(Sender: TObject);
 begin
+  OpenDlg.InitialDir:=GetCurrentDir;
   if OpenDlg.Execute then
   begin
     MyPicture := TPicture.Create;

@@ -58,10 +58,10 @@ object fmMain: TfmMain
     TabOrder = 2
   end
   object Label3: TLabel
-    Left = 757
+    Left = 755
     Height = 26
     Top = 52
-    Width = 61
+    Width = 63
     Anchors = [akTop, akRight]
     Caption = 'Разрешение'#13#10' DPI'
     ParentColor = False
@@ -316,7 +316,7 @@ object fmMain: TfmMain
     Left = 740
     Height = 13
     Top = 191
-    Width = 25
+    Width = 27
     Caption = 'Scale'
     ParentColor = False
   end
@@ -340,7 +340,6 @@ object fmMain: TfmMain
     TabOrder = 14
   end
   object OpenDlg: TOpenDialog
-    InitialDir = 'D:\Hide\MTR\Пленки'
     left = 456
     top = 8
   end

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, Buttons, Spin, UPoints;
+  StdCtrls, Buttons, Spin, ComCtrls, ActnList, Menus, UPoints;
 
 const
   CrossSize=3;
@@ -14,32 +14,46 @@ const
 
 type
 
+  TPointsListState = (plsEmpty, plsSaved, plsChanged);
+
   { TfmMain }
 
   TfmMain = class(TForm)
+    aiSaveToClipboard: TAction;
+    aiDeleteLastPoint: TAction;
+    aiNewLine: TAction;
+    aiSetX: TAction;
+    aiNewScale: TAction;
+    aiNewImage: TAction;
+    ActionList1: TActionList;
+    bnSaveOx: TBitBtn;
+    bnClearOx: TBitBtn;
     bnUpdateImage: TButton;
     bnChangeImage: TBitBtn;
     bnSetXaxis: TButton;
     bnSaveToClipboard: TButton;
-    bnClearAll: TButton;
+    bnNewLine: TButton;
     bnDeleteLastPoint: TButton;
     bnChangeScale: TButton;
     edEndX: TEdit;
+    edFileName: TEdit;
+    edTest: TEdit;
     edStartY: TEdit;
     edAxisY2: TEdit;
     edEndY: TEdit;
     edDPI: TEdit;
     edStartX: TEdit;
-    edXpoint: TEdit;
     edX: TEdit;
-    edYpoint: TEdit;
+    edXpoint: TEdit;
     edY: TEdit;
+    edYpoint: TEdit;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
     Image1: TImage;
     Label1: TLabel;
     Label10: TLabel;
+    Label11: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -48,16 +62,24 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
     OpenDlg: TOpenDialog;
+    PopupMenu1: TPopupMenu;
     sbImage: TScrollBox;
     sedScale: TSpinEdit;
+    StatusBar: TStatusBar;
     UnitsGroup: TRadioGroup;
-    procedure bnChangeImageClick(Sender: TObject);
-    procedure bnChangeScaleClick(Sender: TObject);
-    procedure bnClearAllClick(Sender: TObject);
-    procedure bnDeleteLastPointClick(Sender: TObject);
-    procedure bnSaveToClipboardClick(Sender: TObject);
-    procedure bnSetXaxisClick(Sender: TObject);
+    procedure aiChangeImageClick(Sender: TObject);
+    procedure aiChangeScaleClick(Sender: TObject);
+    procedure aiNewLineClick(Sender: TObject);
+    procedure aiDeleteLastPointClick(Sender: TObject);
+    procedure aiSaveToClipboardClick(Sender: TObject);
+    procedure aiSetXaxisClick(Sender: TObject);
+    procedure bnClearOxClick(Sender: TObject);
+    procedure bnSaveOxClick(Sender: TObject);
     procedure bnUpdateImageClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -71,6 +93,7 @@ type
     fIsPictureLoaded: boolean;
     fPointslist: TDigPointsList;
     CursorX, CursorY: integer;
+    FPointsListState: TPointsListState;
     fScale: byte;
     fStartX: integer;
     fStartY: integer;
@@ -85,9 +108,13 @@ type
     procedure SetEndY(AValue: integer);
     procedure SetMyPicture(AValue: TPicture);
     procedure SetPointsList(AValue: TDigPointsList);
+    procedure SetPointsListState(AValue: TPointsListState);
     procedure SetStartX(AValue: integer);
     procedure SetStartY(AValue: integer);
     procedure DrawCross(ix, iy: integer);
+    procedure UpdateStatusPanel;
+    procedure SaveOxToClipboard;
+    procedure ClearOx;
   protected
     procedure UpdateImage;
     procedure ChangePictureScale;
@@ -108,6 +135,7 @@ type
     property EndX: integer read GetEndX write SetEndX;
     property StartY: integer read GetStartY write SetStartY;
     property EndY: integer read GetEndY write SetEndY;
+    property PointsListState: TPointsListState read FPointsListState write SetPointsListState;
   end;
 
 var
@@ -131,11 +159,11 @@ end;
 
 procedure TfmMain.FormDestroy(Sender: TObject);
 begin
-  PointsList:=nil;
+  PointsList := nil;
   inherited;
 end;
 
-procedure TfmMain.bnChangeImageClick(Sender: TObject);
+procedure TfmMain.aiChangeImageClick(Sender: TObject);
 begin
   OpenDlg.InitialDir:=GetCurrentDir;
   if OpenDlg.Execute then
@@ -143,19 +171,43 @@ begin
     MyPicture := TPicture.Create;
     MyPicture.LoadFromFile(OpenDlg.FileName);
     Image1.Picture.Clear;
-    fScale := 1; // Принудительно 1, иначе начальные значения поделит на Scale
-    StartX:=0;
-    EndX:=MyPicture.Width;
-    StartY:=MyPicture.Height;
-    EndY:=StartY;
-    ChangePictureScale;
+    ClearOx;
     fIsPictureLoaded:=true;
     UpdateImage;
+    edFileName.Text:=OpenDlg.FileName;
     bnSetXaxis.Enabled:=true;
   end;
 end;
 
-procedure TfmMain.bnChangeScaleClick(Sender: TObject);
+procedure TfmMain.SaveOxToClipboard;
+var
+  StrList: TStringList;
+  str: string;
+begin
+  StrList := TStringList.Create;
+  try
+    str := format('%d , %d',[fStartX,fStartY]);
+    StrList.Add(str);
+    str := format('%d , %d',[fEndX,fEndY]);
+    StrList.Add(str);
+    Clipboard.AsText := StrList.Text;
+    PointsListState := plsChanged;
+  finally
+    StrList.free;
+  end;
+end;
+
+procedure TfmMain.ClearOx;
+begin
+  fScale := 1; // Принудительно 1, иначе начальные значения поделит на Scale
+  StartX:=0;
+  EndX:=MyPicture.Width;
+  StartY:=MyPicture.Height;
+  EndY:=StartY;
+  ChangePictureScale;
+end;
+
+procedure TfmMain.aiChangeScaleClick(Sender: TObject);
 begin
   ChangePictureScale;
   UpdateImage;
@@ -168,8 +220,8 @@ begin
   Image1.Width:=MyPicture.Width*Scale;
   Image1.Height:=MyPicture.Height*Scale;
   case UnitsGroup.ItemIndex of
-    0: PointsList.Scale:=1/Self.Scale;
-    1: PointsList.Scale:=25.4/StrToInt(edDPI.text)/self.Scale;
+    0: PointsList.Scale:=1/Self.Scale;    // pixels
+    1: PointsList.Scale:=25.4/StrToInt(edDPI.text)/self.Scale; // mm
   end;
   PointsList.Clear;
   edStartX.Text:=IntToStr(StartX);
@@ -198,40 +250,55 @@ begin
     DrawCross(round(PointsList.Points[i].X),round(PointsList.Points[i].Y));
   end;
   Image1.Repaint;
+  UpdateStatusPanel;
 end;
 
-procedure TfmMain.bnClearAllClick(Sender: TObject);
+procedure TfmMain.aiNewLineClick(Sender: TObject);
 begin
   PointsList.Clear;
   UpdateImage;
 end;
 
-procedure TfmMain.bnDeleteLastPointClick(Sender: TObject);
+procedure TfmMain.aiDeleteLastPointClick(Sender: TObject);
 begin
   if PointsList.Count>0 then
-  begin
     PointsList.Delete(PointsList.Count-1);
-    UpdateImage;
-  end;
+  if PointsList.Count=0 then
+    PointsListState := plsEmpty
+  else
+    PointsListState := plsChanged;
+  UpdateImage;
 end;
 
-procedure TfmMain.bnSaveToClipboardClick(Sender: TObject);
+procedure TfmMain.aiSaveToClipboardClick(Sender: TObject);
 var
   List: TStringList;
 begin
   List:=PointsList.SaveToText;
   try
-    Clipboard.AsText:=List.Text;
+    Clipboard.AsText := List.Text;
+    PointsListState := plsSaved;
   finally
     List.Free;
   end;
 end;
 
-procedure TfmMain.bnSetXaxisClick(Sender: TObject);
+procedure TfmMain.aiSetXaxisClick(Sender: TObject);
 begin
   OldCursor:=Image1.Cursor;
   ChangeAxis:=2;
   Image1.Cursor:=crHandPoint;
+end;
+
+procedure TfmMain.bnClearOxClick(Sender: TObject);
+begin
+  ClearOx;
+  UpdateImage;
+end;
+
+procedure TfmMain.bnSaveOxClick(Sender: TObject);
+begin
+  SaveOxToClipboard;
 end;
 
 procedure TfmMain.bnUpdateImageClick(Sender: TObject);
@@ -258,7 +325,8 @@ begin
     EndX := CursorX;
     EndY := CursorY;
     PointsList.SetXaxis(StartX,StartY,EndX,EndY);
-    Image1.Cursor:=OldCursor;
+    SaveOxToClipboard;
+    Image1.Cursor:=crCross;
     Image1.Canvas.Pen.Color:=clRed;
     Image1.Canvas.Pen.Mode:=pmCopy;
     ChangeAxis:=0;
@@ -267,6 +335,8 @@ begin
   begin
     PointsList.AddPoint(CursorX, CursorY);
     DrawCross(CursorX,CursorY);
+    PointsListState := plsChanged;
+    UpdateStatusPanel;
   end;
 end;
 
@@ -305,7 +375,15 @@ procedure TfmMain.SetPointsList(AValue: TDigPointsList);
 begin
   if fPointsList=AValue then Exit;
   PointsList.free;
+  PointsListState := plsEmpty;
   fPointsList:=AValue;
+end;
+
+procedure TfmMain.SetPointsListState(AValue: TPointsListState);
+begin
+  if fPointsListState=AValue then Exit;
+  fPointsListState:=AValue;
+  UpdateStatusPanel;
 end;
 
 procedure TfmMain.SetEndX(AValue: integer);
@@ -372,6 +450,16 @@ begin
     LineTo(ix,iy+CrossSize);
   end;
   Image1.Repaint;
+end;
+
+procedure TfmMain.UpdateStatusPanel;
+begin
+  StatusBar.Panels[1].Text := 'Points='+IntToStr(PointsList.Count);
+  case PointsListState of
+    plsEmpty: StatusBar.Panels[2].Text := 'Empty';
+    plsChanged: StatusBar.Panels[2].Text := 'Changed';
+    plsSaved: StatusBar.Panels[2].Text := 'Saved';
+  end;
 end;
 
 

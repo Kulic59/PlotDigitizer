@@ -38,7 +38,6 @@ type
     function GetPoints(i: integer): TDigPoint;
     function GetX(i: integer): double;
     function GetY(i: integer): double;
-    procedure SetCurrent(AValue: TDigPoint);
   public
 
     constructor Create;
@@ -48,7 +47,7 @@ type
     procedure SetXaxis( SX, SY, EX, EY: integer);
     function SaveToText:TStringList;
 
-    property Current: TDigPoint read fCurrent write SetCurrent;
+    property Current: TDigPoint read fCurrent;
     property CurrentX: double read GetCurrentX;
     property CurrentY: double read GetCurrentY;
     property Points[i: integer]: TDigPoint read GetPoints;
@@ -64,13 +63,13 @@ implementation
 constructor TDigPointsList.Create;
 begin
   inherited Create(true);
-  Current:=TDigPoint.Create(0,0);
+  fCurrent := TDigPoint.Create(0,0);
   Scale:=1;
 end;
 
 destructor TDigPointsList.Destroy;
 begin
-  Current.free;
+  FreeAndNil(fCurrent);
   inherited Destroy;
 end;
 
@@ -115,13 +114,6 @@ end;
 function TDigPointsList.GetY(i: integer): double;
 begin
   result:=CalcY(Points[i]);
-end;
-
-procedure TDigPointsList.SetCurrent(AValue: TDigPoint);
-begin
-  if fCurrent=AValue then Exit;
-  Current.free;
-  fCurrent:=AValue;
 end;
 
 procedure TDigPointsList.AddPoint(ix, iy: integer);

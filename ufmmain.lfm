@@ -1,67 +1,69 @@
 object fmMain: TfmMain
-  Left = 135
-  Height = 515
-  Top = 33
+  Left = 445
+  Height = 517
+  Top = 143
   Width = 830
   Caption = 'Оцифровка линий от сканированного изображения'
-  ClientHeight = 515
+  ClientHeight = 517
   ClientWidth = 830
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '2.0.8.0'
   object GroupBox1: TGroupBox
     Left = 80
     Height = 35
-    Top = 8
-    Width = 313
+    Top = 24
+    Width = 273
     Caption = 'Координаты курсора в пикселах изображения'
-    TabOrder = 3
-  end
-  object Label1: TLabel
-    Left = 112
-    Height = 13
-    Top = 24
-    Width = 10
-    Caption = 'X:'
-    ParentColor = False
-  end
-  object edX: TEdit
-    Left = 140
-    Height = 21
-    Top = 20
-    Width = 80
-    TabOrder = 0
-  end
-  object Label2: TLabel
-    Left = 250
-    Height = 13
-    Top = 24
-    Width = 10
-    Caption = 'Y:'
-    ParentColor = False
-  end
-  object edY: TEdit
-    Left = 280
-    Height = 21
-    Top = 20
-    Width = 80
+    ClientHeight = 17
+    ClientWidth = 269
     TabOrder = 1
+    object Label1: TLabel
+      Left = 16
+      Height = 13
+      Top = 0
+      Width = 10
+      Caption = 'X:'
+      ParentColor = False
+    end
+    object edX: TEdit
+      Left = 32
+      Height = 21
+      Top = -4
+      Width = 80
+      TabOrder = 0
+    end
+    object Label2: TLabel
+      Left = 128
+      Height = 13
+      Top = 0
+      Width = 10
+      Caption = 'Y:'
+      ParentColor = False
+    end
+    object edY: TEdit
+      Left = 160
+      Height = 21
+      Top = -4
+      Width = 80
+      TabOrder = 1
+    end
   end
   object bnChangeImage: TBitBtn
     Left = 734
     Height = 30
     Top = 13
     Width = 75
+    Action = aiNewImage
     Anchors = [akTop, akRight]
-    Caption = 'Change Image'
-    OnClick = bnChangeImageClick
-    TabOrder = 2
+    OnClick = aiChangeImageClick
+    TabOrder = 0
   end
   object Label3: TLabel
-    Left = 755
+    Left = 757
     Height = 26
     Top = 52
-    Width = 63
+    Width = 61
     Anchors = [akTop, akRight]
     Caption = 'Разрешение'#13#10' DPI'
     ParentColor = False
@@ -72,19 +74,19 @@ object fmMain: TfmMain
     Top = 80
     Width = 80
     Anchors = [akTop, akRight]
-    TabOrder = 4
+    TabOrder = 2
     Text = '600'
   end
   object GroupBox2: TGroupBox
     Left = 24
     Height = 78
-    Top = 426
+    Top = 413
     Width = 196
     Anchors = [akLeft, akBottom]
     Caption = 'Параметры оси X'
     ClientHeight = 60
     ClientWidth = 192
-    TabOrder = 5
+    TabOrder = 3
     object Label4: TLabel
       Left = 22
       Height = 13
@@ -176,7 +178,7 @@ object fmMain: TfmMain
       Anchors = [akLeft, akBottom]
       Caption = 'Set'
       Enabled = False
-      OnClick = bnSetXaxisClick
+      OnClick = aiSetXaxisClick
       TabOrder = 5
     end
   end
@@ -203,18 +205,18 @@ object fmMain: TfmMain
       'mm'
     )
     OnClick = UnitsGroupClick
-    TabOrder = 6
+    TabOrder = 4
   end
   object GroupBox3: TGroupBox
-    Left = 256
+    Left = 360
     Height = 51
-    Top = 428
+    Top = 429
     Width = 217
     Anchors = [akLeft, akBottom]
     Caption = 'Координаты цифруемой точки'
     ClientHeight = 33
     ClientWidth = 213
-    TabOrder = 7
+    TabOrder = 5
     object Label8: TLabel
       Left = 11
       Height = 13
@@ -253,34 +255,34 @@ object fmMain: TfmMain
     end
   end
   object bnSaveToClipboard: TButton
-    Left = 519
+    Left = 623
     Height = 25
-    Top = 424
+    Top = 406
     Width = 115
+    Action = aiSaveToClipboard
     Anchors = [akLeft, akBottom]
-    Caption = 'Save to Clipboard'
-    OnClick = bnSaveToClipboardClick
-    TabOrder = 8
+    OnClick = aiSaveToClipboardClick
+    TabOrder = 6
   end
-  object bnClearAll: TButton
-    Left = 520
+  object bnNewLine: TButton
+    Left = 624
     Height = 25
-    Top = 456
+    Top = 438
     Width = 75
+    Action = aiNewLine
     Anchors = [akLeft, akBottom]
-    Caption = 'Clear All'
-    OnClick = bnClearAllClick
-    TabOrder = 9
+    OnClick = aiNewLineClick
+    TabOrder = 7
   end
   object bnDeleteLastPoint: TButton
-    Left = 521
+    Left = 625
     Height = 25
-    Top = 484
+    Top = 466
     Width = 99
+    Action = aiDeleteLastPoint
     Anchors = [akLeft, akBottom]
-    Caption = 'Delete Last Point'
-    OnClick = bnDeleteLastPointClick
-    TabOrder = 10
+    OnClick = aiDeleteLastPointClick
+    TabOrder = 8
   end
   object bnUpdateImage: TButton
     Left = 561
@@ -289,26 +291,29 @@ object fmMain: TfmMain
     Width = 127
     Caption = 'Update Image'
     OnClick = bnUpdateImageClick
-    TabOrder = 11
+    TabOrder = 9
+    Visible = False
   end
   object sbImage: TScrollBox
     Left = 36
-    Height = 342
+    Height = 336
     Top = 65
     Width = 668
     HorzScrollBar.Page = 90
     VertScrollBar.Page = 90
     Anchors = [akTop, akLeft, akRight, akBottom]
-    ClientHeight = 338
+    ClientHeight = 332
     ClientWidth = 664
-    TabOrder = 12
+    TabOrder = 10
     object Image1: TImage
+      Cursor = crCross
       Left = 0
       Height = 90
       Top = 0
       Width = 90
       OnClick = Image1Click
       OnMouseMove = Image1MouseMove
+      PopupMenu = PopupMenu1
       Proportional = True
     end
   end
@@ -316,7 +321,7 @@ object fmMain: TfmMain
     Left = 740
     Height = 13
     Top = 191
-    Width = 27
+    Width = 25
     Caption = 'Scale'
     ParentColor = False
   end
@@ -327,7 +332,7 @@ object fmMain: TfmMain
     Width = 60
     MaxValue = 4
     MinValue = 1
-    TabOrder = 13
+    TabOrder = 11
     Value = 1
   end
   object bnChangeScale: TButton
@@ -335,12 +340,125 @@ object fmMain: TfmMain
     Height = 25
     Top = 243
     Width = 75
-    Caption = 'Change Scale'
-    OnClick = bnChangeScaleClick
+    Action = aiNewScale
+    OnClick = aiChangeScaleClick
+    TabOrder = 12
+  end
+  object Label11: TLabel
+    Left = 54
+    Height = 13
+    Top = 4
+    Width = 54
+    Caption = 'Имя файла'
+    ParentColor = False
+  end
+  object edFileName: TEdit
+    Left = 119
+    Height = 21
+    Top = 4
+    Width = 299
+    ReadOnly = True
+    TabStop = False
+    TabOrder = 13
+  end
+  object edTest: TEdit
+    Left = 368
+    Height = 21
+    Top = 32
+    Width = 80
     TabOrder = 14
+    Text = 'edTest'
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 494
+    Width = 830
+    Panels = <    
+      item
+        Width = 50
+      end    
+      item
+        Text = 'start'
+        Width = 100
+      end    
+      item
+        Width = 50
+      end>
+    SimplePanel = False
+  end
+  object bnSaveOx: TBitBtn
+    Left = 240
+    Height = 25
+    Top = 416
+    Width = 64
+    Caption = 'Save Ox'
+    OnClick = bnSaveOxClick
+    TabOrder = 16
+  end
+  object bnClearOx: TBitBtn
+    Left = 240
+    Height = 25
+    Top = 448
+    Width = 64
+    Caption = 'Clear Ox'
+    OnClick = bnClearOxClick
+    TabOrder = 17
   end
   object OpenDlg: TOpenDialog
     left = 456
     top = 8
+  end
+  object ActionList1: TActionList
+    left = 228
+    top = 157
+    object aiNewImage: TAction
+      Category = 'FileAction'
+      Caption = 'New Image'
+      OnExecute = aiChangeImageClick
+    end
+    object aiNewScale: TAction
+      Category = 'ScaleAction'
+      Caption = 'Change Scale'
+      OnExecute = aiChangeScaleClick
+    end
+    object aiSetX: TAction
+      Category = 'ScaleAction'
+      Caption = 'Set X'
+      OnExecute = aiSetXaxisClick
+    end
+    object aiNewLine: TAction
+      Category = 'PointsAction'
+      Caption = 'New Line'
+      OnExecute = aiNewLineClick
+      ShortCut = 16462
+    end
+    object aiDeleteLastPoint: TAction
+      Category = 'PointsAction'
+      Caption = 'Delete Last Point'
+      OnExecute = aiDeleteLastPointClick
+    end
+    object aiSaveToClipboard: TAction
+      Category = 'PointsAction'
+      Caption = 'Save To Clipboard'
+      OnExecute = aiSaveToClipboardClick
+      ShortCut = 16467
+    end
+  end
+  object PopupMenu1: TPopupMenu
+    left = 376
+    top = 150
+    object MenuItem1: TMenuItem
+      Action = aiDeleteLastPoint
+    end
+    object MenuItem2: TMenuItem
+      Action = aiNewLine
+    end
+    object MenuItem4: TMenuItem
+      Action = aiSaveToClipboard
+    end
+    object MenuItem5: TMenuItem
+      Action = aiNewScale
+    end
   end
 end
